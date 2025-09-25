@@ -15,4 +15,17 @@ export class SourceAssembler {
             officialSite: resource.officialSite || null
         });
     }
+
+    /**
+     * Converts a response object from the API into a list of Source entities.
+     * @param response
+     * @returns {*|*[]}
+     */
+    static fromEntitiesFromResponse(response) {
+        if (!Array.isArray(response)) {
+            return [];
+        }
+        return response.map(resource => this.toEntityFromResource(resource));
+    }
+
 }

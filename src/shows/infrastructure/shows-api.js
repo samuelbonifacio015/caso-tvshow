@@ -25,7 +25,8 @@ export class ShowsApi {
         return http.get(`${showsEndpoint}`);
     }
 
-    getShowsForSourceId(sourceId) {
-        return http.get(showsHeadlinesEndpoint, {params: {sources: sourceId}});
+    getShowsBySource(query = "golden girls") {
+        const response =  axios.get(`${showApiUrl}?q=${query}`);
+        return response.data; // TVMaze devuelve un array de { score, show }
     }
 }
